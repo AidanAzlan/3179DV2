@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Performing Arts Attendance by Household Income",
+    "subtitle": "Percentage of adults attending each event type in 2021–22"
+  },
+  "width": 460,
+  "height": 230,
+  "data": {
+    "url": "data/attendance_by_income.csv"
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "IncomeQuintile",
+      "type": "ordinal",
+      "sort": [
+        "Lowest quintile",
+        "Second quintile",
+        "Third quintile",
+        "Fourth quintile",
+        "Highest quintile"
+      ],
+      "axis": {
+        "title": "Household income quintile",
+        "labelAngle": -25,
+        "labelLimit": 120
+      }
+    },
+    "y": {
+      "field": "Activity",
+      "type": "nominal",
+      "sort": [
+        "Live music concerts or performances",
+        "Theatre performances",
+        "Musicals or operas",
+        "Dance performances"
+      ],
+      "axis": {
+        "title": "Performing arts event",
+        "labelLimit": 220
+      }
+    },
+    "color": {
+      "field": "Attendance",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues",
+        "domain": [0, 30]
+      },
+      "legend": {
+        "title": "Attendance (%)"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "IncomeQuintile",
+        "type": "nominal",
+        "title": "Income group"
+      },
+      {
+        "field": "Activity",
+        "type": "nominal",
+        "title": "Event type"
+      },
+      {
+        "field": "Attendance",
+        "type": "quantitative",
+        "title": "Attendance (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

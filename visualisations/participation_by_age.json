@@ -1,0 +1,94 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/participation_by_age.csv"
+  },
+  "title": {
+    "text": "Adult Attendance at Performing Arts by Age",
+    "subtitle": "Percentage attending at least once in 2021–22, Australians aged 15+"
+  },
+  "width": 500,
+  "height": 300,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#4C78A8"
+      },
+      "encoding": {
+        "y": {
+          "field": "Age",
+          "type": "ordinal",
+          "sort": [
+            "15-17",
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-75",
+            "75 and over"
+          ],
+          "title": "Age group"
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "title": "Attendance (%)",
+          "scale": {
+            "domain": [0, 40]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Age",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "Attendance",
+            "type": "quantitative",
+            "title": "Attendance (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 5,
+        "fontSize": 11,
+        "color": "black"
+      },
+      "encoding": {
+        "y": {
+          "field": "Age",
+          "type": "ordinal",
+          "sort": [
+            "15-17",
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-75",
+            "75 and over"
+          ]
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ]
+}

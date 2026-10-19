@@ -1,0 +1,95 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 650,
+  "height": 450,
+  "title": "Comparing Arts Participation With Cost Barrier Rate",
+  "projection": {
+    "type": "mercator"
+  },
+  "data": {
+    "url": "../data/australia_states.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2026_AUST_GDA2020"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME26",
+      "from": {
+        "data": {
+          "url": "../data/choro_bivar.csv",
+          "format": {
+            "type": "csv"
+          }
+        },
+        "key": "State"
+      },
+      "as": "matched"
+    },
+    {
+      "filter": "datum.matched != null && datum.properties.STE_NAME26 != 'Other Territories' && datum.properties.STE_NAME26 != 'Outside Australia'"
+    },
+    {
+      "calculate": "toNumber(datum.matched.Participation)",
+      "as": "ParticipationNumber"
+    },
+    {
+      "calculate": "toNumber(datum.matched.CostBarrier)",
+      "as": "CostBarrierNumber"
+    },
+    {
+      "calculate": "datum.ParticipationNumber <= 43 ? 'Low' : datum.ParticipationNumber <= 47 ? 'Medium' : 'High'",
+      "as": "ParticipationGroup"
+    },
+    {
+      "calculate": "datum.CostBarrierNumber <= 54 ? 'Low' : datum.CostBarrierNumber <= 56 ? 'Medium' : 'High'",
+      "as": "CostBarrierGroup"
+    },
+    {
+      "calculate": "datum.CostBarrierGroup == 'Low' && datum.ParticipationGroup == 'Low' ? '#31588e' : datum.CostBarrierGroup == 'Low' && datum.ParticipationGroup == 'Medium' ? '#4c8d9b' : datum.CostBarrierGroup == 'Low' && datum.ParticipationGroup == 'High' ? '#6abf83' : datum.CostBarrierGroup == 'Medium' && datum.ParticipationGroup == 'Low' ? '#6b8fc4' : datum.CostBarrierGroup == 'Medium' && datum.ParticipationGroup == 'Medium' ? '#8bb5c9' : datum.CostBarrierGroup == 'Medium' && datum.ParticipationGroup == 'High' ? '#a4d0c7' : datum.CostBarrierGroup == 'High' && datum.ParticipationGroup == 'Low' ? '#8c96c6' : datum.CostBarrierGroup == 'High' && datum.ParticipationGroup == 'Medium' ? '#a5a6c9' : '#b3c2d5'",
+      "as": "BivariateColour"
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "BivariateColour",
+      "type": "nominal",
+      "scale": null,
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME26",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "ParticipationNumber",
+        "type": "quantitative",
+        "title": "Arts participation (%)"
+      },
+      {
+        "field": "CostBarrierNumber",
+        "type": "quantitative",
+        "title": "Cost barrier (%)"
+      },
+      {
+        "field": "ParticipationGroup",
+        "type": "nominal",
+        "title": "Participation group"
+      },
+      {
+        "field": "CostBarrierGroup",
+        "type": "nominal",
+        "title": "Cost barrier group"
+      }
+    ]
+  }
+}

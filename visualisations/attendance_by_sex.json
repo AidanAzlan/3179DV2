@@ -1,0 +1,120 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/attendance_by_sex.csv"
+  },
+  "title": {
+    "text": "Performing Arts Attendance by Sex",
+    "subtitle": "Percentage of Australian adults aged 15+ attending at least once in 2021–22"
+  },
+  "width": 500,
+  "height": 220,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar"
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Live music concerts or performances",
+            "Musicals or operas",
+            "Theatre performances",
+            "Dance performances",
+            "Other performing arts"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 250
+          }
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "title": "Attendance (%)",
+          "scale": {
+            "domain": [0, 22]
+          }
+        },
+        "yOffset": {
+          "field": "Sex",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "Sex",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Male", "Female"],
+            "range": ["#4C78A8", "#E07B91"]
+          },
+          "legend": {
+            "title": "Sex",
+            "orient": "top"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Activity",
+            "type": "nominal",
+            "title": "Event"
+          },
+          {
+            "field": "Sex",
+            "type": "nominal"
+          },
+          {
+            "field": "Attendance",
+            "type": "quantitative",
+            "title": "Attendance (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 4,
+        "fontSize": 10,
+        "color": "black"
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Live music concerts or performances",
+            "Musicals or operas",
+            "Theatre performances",
+            "Dance performances",
+            "Other performing arts"
+          ]
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative"
+        },
+        "yOffset": {
+          "field": "Sex",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "transform": [
+    {
+      "fold": ["Male", "Female"],
+      "as": ["Sex", "Attendance"]
+    }
+  ]
+}

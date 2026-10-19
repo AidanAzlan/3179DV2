@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Performing Arts Attendance by Education Level",
+    "subtitle": "Percentage of adults attending each event type in 2021–22"
+  },
+  "width": 500,
+  "height": 280,
+  "data": {
+    "url": "data/attendance_by_education.csv"
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "Education",
+      "type": "ordinal",
+      "sort": [
+        "Year 10 or below",
+        "Year 11",
+        "Year 12",
+        "Certificate",
+        "Advanced diploma/diploma",
+        "Bachelor degree",
+        "Graduate diploma/graduate certificate",
+        "Postgraduate degree"
+      ],
+      "axis": {
+        "title": "Education level",
+        "labelAngle": -45,
+        "labelLimit": 150
+      }
+    },
+    "y": {
+      "field": "Activity",
+      "type": "nominal",
+      "sort": [
+        "Live music concerts or performances",
+        "Theatre performances",
+        "Musicals or operas",
+        "Dance performances"
+      ],
+      "axis": {
+        "title": "Performing arts event",
+        "labelLimit": 220
+      }
+    },
+    "color": {
+      "field": "Attendance",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues",
+        "domain": [0, 30]
+      },
+      "legend": {
+        "title": "Attendance (%)"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Education",
+        "type": "nominal",
+        "title": "Education level"
+      },
+      {
+        "field": "Activity",
+        "type": "nominal",
+        "title": "Event type"
+      },
+      {
+        "field": "Attendance",
+        "type": "quantitative",
+        "title": "Attendance (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/overall_participation.csv"
+  },
+  "title": {
+    "text": "Adult Attendance at Performing Arts Events",
+    "subtitle": "Percentage of Australians aged 15+ who attended at least once in 2021–22"
+  },
+  "width": 550,
+  "height": 300,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#4C78A8"
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {
+            "labelLimit": 250
+          }
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "title": "Adults attending (%)",
+          "scale": {
+            "domain": [0, 50]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Activity",
+            "type": "nominal",
+            "title": "Cultural venue or event"
+          },
+          {
+            "field": "Attendance",
+            "type": "quantitative",
+            "title": "Attendance (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 5,
+        "fontSize": 11,
+        "color": "black"
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music and Performing Arts Participation in Australia</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Vega -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Music and Performing Arts Participation in Australia</h1>
+        <h2>Introduction</h2>
+        <p>
+            Music and the performing arts are an important part of Australia's cultural life, but attendance is not evenly distributed across events or population groups. This visualisation explores patterns in performing arts attendance among Australian adults, examining differences by age, sex, education and household income. It also investigates how attendance has changed over time and how creative participation varies across Australian states and territories, including the role of reported cost barriers.
+
+            Using data from the Australian Bureau of Statistics (ABS) and Creative Australia, the visualisation moves from the overall attendance picture to geographical and socioeconomic differences. Together, these findings help reveal which performing arts attract the most audiences and how engagement varies across different communities.
+        </p>
+    </header>
+
+    <main>
+        <section>
+             <h2>Understanding Performing Arts Attendance</h2>
+                
+                <p>Before examining geographical and socioeconomic differences, it is useful to understand which performing arts events attract audiences and who is most likely to attend them. The following charts compare attendance across event types and explore how attendance differs by age and sex.</p>
+
+               
+                    <p>
+                    Live music concerts and performances had the highest attendance among the selected performing arts events, with 17.6% of Australian adults aged 15 and over attending at least once in 2021–22. Theatre performances followed at 8.0%, while musicals and operas accounted for 7.0%. Dance performances had the lowest attendance, at 5.1%. Overall, these results suggest that live music was considerably more popular than other performing arts events, with attendance for live music more than twice that of theatre performances.    
+                    </p>
+                
+                    <div id="chart1"></div>
+                    <p>
+                        Source: Australian Bureau of Statistics: Cultural and creative activities, 2021-22, Table 16. Link: https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release
+                    </p>
+
+                
+                    <p>
+                        Attendance at performing arts events varied across adult age groups in 2021–22. Adults aged 18–24 recorded the highest attendance rate at 34.7%, followed closely by those aged 35–44 at 34.6%. Attendance generally declined among older age groups, reaching 21.8% for those aged 65–75 and 15.1% for those aged 75 and over. This suggests that performing arts attendance was more common among younger and middle-aged adults than among older adults.
+                    </p>
+                    
+                    <div id="chart2"></div>
+                    <p>
+                        Source: Australian Bureau of Statistics: Cultural and creative activities, 2021-22, Table 16. Link: https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release
+                    </p>
+                
+                    <p>
+                        Female adults recorded higher attendance than male adults across all four performing arts categories in 2021–22. The largest difference occurred for theatre performances, where female attendance was 9.7% compared with 6.1% for males. Musicals and operas also showed a notable gap, at 8.9% for females and 5.0% for males. Live music had the highest attendance for both groups, at 18.4% for females and 16.7% for males. These results suggest that sex differences in attendance were more pronounced for some performing arts categories than others.
+                    </p>
+                    
+                    <div id="chart3"></div>
+                    <p>
+                        Source: Australian Bureau of Statistics: Cultural and creative activities, 2021-22, Table 16. Link: https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release
+                    </p>
+        </section>
+           
+        <section>
+            <h2>How Attendance Has Changed</h2>
+                <p>The differences between event types and population groups provide a snapshot of attendance in 2021–22. However, this snapshot does not show whether engagement has remained stable over time. Comparing the 2017–18 and 2021–22 results reveals a substantial decline in attendance, while state-level data helps show how this broader change affected different parts of Australia.</p>
+                    <p>
+                    Attendance declined across all five performing arts categories between 2017–18 and 2021–22. Live music concerts and performances experienced the largest percentage-point decrease, falling from 38.2% to 17.6%. Theatre attendance dropped from 16.5% to 8.0%, while attendance at musicals and operas decreased from 15.8% to 7.0%. Dance performances recorded the lowest attendance in 2021–22, at 5.1%. These results show a broad decline in performing arts attendance over the period, although the comparison alone cannot establish the reasons for the change.            </p>
+                    <div id="chart4"></div>
+                    <p>
+                        Source: Australian Bureau of Statistics: Cultural and creative activities, 2021-22, Table 16. Link: https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release
+                    </p>
+
+                    <p>
+                    Cultural venue and event attendance declined across every Australian state and territory between 2017–18 and 2021–22. The Australian Capital Territory recorded the highest attendance in both periods, falling from 92.5% to 71.6%. Western Australia and South Australia had the highest attendance rates in 2021–22 after the ACT, at 69.3% and 67.8%, respectively. New South Wales and Victoria recorded lower rates of 61.9% and 60.9%. These results indicate that the overall decline occurred nationwide, although attendance levels varied by location.            </p>
+                    <div id="chart5"></div>
+                    <p>
+                        Source: Australian Bureau of Statistics: Cultural and creative activities, 2021-22, Table 14. Link: https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release
+                    </p>
+                <p>Although attendance declined across the country, attending an event is only one way to engage with the arts. People can also participate directly by making music, dancing or taking part in theatre and other creative activities. The following maps shift the focus from attendance to creative participation, exploring regional differences and whether these patterns align with reported cost barriers.</p>
+                    
+        </section>    
+            
+            
+        <section>
+            <h2>Creative Participation</h2>
+                    <p>
+                        Creative participation varied across Australian states and territories. The Northern Territory recorded the highest participation rate at 55%, followed by the Australian Capital Territory at 49%. Tasmania had the lowest rate at 40%, while South Australia recorded 41%. New South Wales and Queensland had equal participation rates of 44%. Overall, the map highlights geographical differences in creative participation, although the relatively small Northern Territory sample of 107 respondents should be considered when interpreting its comparatively high rate.
+                    </p>
+                    <div id="map1"></div>
+                    <p>
+                        Source: Creative Australia, 2022 National Arts Participation Survey, State and Territory Results. Link: https://creative.gov.au/research/creating-value-results-national-arts-participation-survey
+                    </p>
+
+                    <p>
+                        Music participation was higher than dance and theatre participation across all Australian states and territories, reaching 18% in New South Wales and the Australian Capital Territory. Dance participation was highest in the Northern Territory at 13%, while theatre participation peaked in New South Wales at 8%. Tasmania recorded the lowest rates for both dance and theatre, at 5% and 3%, respectively. These patterns suggest that participation varies not only geographically but also by performing art category, with music consistently attracting the largest share of participants.
+                    </p>
+                    <div id="map2"></div>
+                    <p>
+                        Source: Creative Australia, 2022 National Arts Participation Survey, State and Territory Results. Link: https://creative.gov.au/research/creating-value-results-national-arts-participation-survey
+                    </p>
+
+                    <p>
+                        The bivariate map compares creative participation with reported cost barriers across Australia. The Northern Territory had the highest participation rate at 55%, alongside a cost-barrier rate of 54%. In contrast, Tasmania had the lowest participation rate at 40%, also with a cost-barrier rate of 54%. South Australia, Queensland and Western Australia reported higher cost-barrier rates of 58%, despite having participation rates between 41% and 44%. These results show that higher reported cost barriers do not correspond perfectly to lower participation across regions. However, the map alone cannot establish whether cost barriers cause differences in participation.
+                    </p>
+                    <div id="map3"></div>
+                    <div id="map3-legend"></div>
+                    <p>
+                        Source: Creative Australia, 2022 National Arts Participation Survey, State and Territory Results. Link: https://creative.gov.au/research/creating-value-results-national-arts-participation-survey
+                    </p>
+                    
+                <p>The maps reveal that creative participation varies between regions, but geographical patterns alone cannot explain differences in cultural engagement. Individual circumstances may also be relevant. By comparing attendance across education levels and household income groups, the final charts investigate whether socioeconomic differences are associated with access to and engagement with performing arts events.
+                </p>
+        </section>    
+        <section>
+            <h2>Sosioeconomic Picture</h2>
+                    <p>
+                        Attendance at performing arts events generally tends to be higher among adults with higher education qualifications. Live music attendance is particularly high among people with a bachelor's degree (24.0%) and a graduate diploma or graduate certificate (23.9%), compared with 9.6% among those with Year 10 education or below. Theatre and musical or opera attendance also tend to be higher among more highly educated groups. Dance attendance is less consistent, with the highest rate among postgraduate degree holders (8.6%). Overall, the chart suggests an association between education level and performing arts attendance, although the pattern varies by event type.
+                    </p>
+                    <div id="chart9"></div>
+                    <p>
+                        Source: Australian Bureau of Statistics: Cultural and creative activities, 2021-22, Table 19. Link: https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release
+                    </p>
+
+                    <p>
+                        Live music has the largest difference, rising from 9.2% in the lowest income quintile to 26.3% in the highest. Attendance at musicals and operas and theatre performances also increases across the income groups. Dance attendance follows a similar pattern until the fourth quintile, where it peaks at 7.0%, before falling to 6.0% in the highest quintile. Overall, the chart suggests that higher household income is associated with greater attendance at most performing arts events.
+                    </p>
+                    <div id="chart10"></div>
+                    <p>
+                        Source: Australian Bureau of Statistics: Cultural and creative activities, 2021-22, Table 20. Link: https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release
+                    </p>
+        </section>    
+            
+
+
+      <section>
+        <h2>Conclusion</h2>
+        
+        <p>
+            Overall, the visualisation reveals several differences in how Australians engage with music and the performing arts. Live music attracted the highest attendance among the selected performing arts events in 2021–22, while attendance generally declined with age among older adults. Female adults also recorded higher attendance than male adults across the selected event categories.
+
+            The comparison between 2017–18 and 2021–22 showed a substantial decline in attendance, both across performing arts events and across Australian states and territories. Meanwhile, the Creative Australia maps highlighted regional differences in creative participation, with reported cost barriers not consistently corresponding to lower participation rates. The socioeconomic comparisons further suggested that adults with higher education qualifications and household incomes tended to have higher attendance rates for most performing arts events.
+
+            Taken together, these findings suggest that cultural engagement is influenced by a combination of event preferences, demographic characteristics, geographical differences and socioeconomic circumstances. Although the data identifies important patterns, it does not establish the causes behind them. Understanding these differences can help guide further investigation into how performing arts engagement might be made more accessible to a broader range of Australians.
+        </p>
+    </section>
+
+    </main>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

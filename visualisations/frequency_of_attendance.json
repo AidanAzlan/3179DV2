@@ -1,0 +1,104 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/frequency_of_attendance.csv"
+  },
+  "title": {
+    "text": "Frequency of Adult Cultural Attendance",
+    "subtitle": "How often attendees visited each venue or event in 2021–22"
+  },
+  "width": 550,
+  "height": 240,
+  "transform": [
+    {
+      "fold": [
+        "Once",
+        "Twice",
+        "3_times",
+        "4_times",
+        "5_times",
+        "6_to_10_times",
+        "11_or_more_times"
+      ],
+      "as": [
+        "Frequency",
+        "Percentage"
+      ]
+    },
+    {
+      "calculate": "datum.Frequency === '3_times' ? '3 times' : datum.Frequency === '4_times' ? '4 times' : datum.Frequency === '5_times' ? '5 times' : datum.Frequency === '6_to_10_times' ? '6–10 times' : datum.Frequency === '11_or_more_times' ? '11+ times' : datum.Frequency",
+      "as": "FrequencyLabel"
+    }
+  ],
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "y": {
+      "field": "Activity",
+      "type": "nominal",
+      "sort": [
+        "Libraries or archives",
+        "Cinemas",
+        "Live music concerts or performances",
+        "Art galleries",
+        "Museums",
+        "Musicals or operas"
+      ],
+      "title": null,
+      "axis": {
+        "labelLimit": 260
+      }
+    },
+    "x": {
+  "field": "Percentage",
+  "type": "quantitative",
+  "stack": "normalize",
+  "title": "Share of attendees (%)",
+  "axis": {
+    "format": ".0f",
+    "values": [0, 25, 50, 75, 100]
+  }
+},
+    "color": {
+      "field": "FrequencyLabel",
+      "type": "ordinal",
+      "sort": [
+        "Once",
+        "Twice",
+        "3 times",
+        "4 times",
+        "5 times",
+        "6–10 times",
+        "11+ times"
+      ],
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": {
+        "title": "Attendance frequency",
+        "orient": "bottom",
+        "columns": 4
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Activity",
+        "type": "nominal",
+        "title": "Event"
+      },
+      {
+        "field": "FrequencyLabel",
+        "type": "ordinal",
+        "title": "Frequency"
+      },
+      {
+        "field": "Percentage",
+        "type": "quantitative",
+        "title": "Share of attendees (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Test: Participation by State",
+  "data": {
+    "url": "../data/participation.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "State",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {"labelAngle": -45}
+    },
+    "y": {
+      "field": "Participation",
+      "type": "quantitative",
+      "title": "Creative participation (%)"
+    }
+  }
+}

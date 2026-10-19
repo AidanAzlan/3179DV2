@@ -1,0 +1,64 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Colour guide",
+  "width": 180,
+  "height": 150,
+  "data": {
+    "values": [
+      {"x": 0, "y": 2, "colour": "#8c96c6", "label": "High"},
+      {"x": 1, "y": 2, "colour": "#a5a6c9", "label": "High"},
+      {"x": 2, "y": 2, "colour": "#b3c2d5", "label": "High"},
+      {"x": 0, "y": 1, "colour": "#6b8fc4", "label": "Medium"},
+      {"x": 1, "y": 1, "colour": "#8bb5c9", "label": "Medium"},
+      {"x": 2, "y": 1, "colour": "#a4d0c7", "label": "Medium"},
+      {"x": 0, "y": 0, "colour": "#31588e", "label": "Low"},
+      {"x": 1, "y": 0, "colour": "#4c8d9b", "label": "Low"},
+      {"x": 2, "y": 0, "colour": "#6abf83", "label": "Low"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "ordinal",
+          "axis": {
+            "orient": "bottom",
+            "title": "Arts participation",
+            "labelExpr": "datum.value == 0 ? 'Low' : datum.value == 1 ? 'Medium' : 'High'",
+            "labelAngle": 0,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "ordinal",
+          "axis": {
+            "title": "Cost barriers",
+            "labelExpr": "datum.value == 0 ? 'Low' : datum.value == 1 ? 'Medium' : 'High'",
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "colour",
+          "type": "nominal",
+          "scale": null,
+          "legend": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

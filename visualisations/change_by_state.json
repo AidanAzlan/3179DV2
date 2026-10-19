@@ -1,0 +1,191 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/change_by_state.csv"
+  },
+  "title": {
+    "text": "Cultural Attendance by State and Territory",
+    "subtitle": "Australian adults aged 15+, percentage attending at least once"
+  },
+  "width": 500,
+  "height": 260,
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#B8B8B8"
+      },
+      "encoding": {
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": [
+            "ACT",
+            "Tas",
+            "WA",
+            "NT",
+            "SA",
+            "Qld",
+            "NSW",
+            "Vic"
+          ],
+          "title": "State or territory"
+        },
+        "x": {
+          "field": "Attendance_2017_18",
+          "type": "quantitative",
+          "title": "Attendance (%)",
+          "scale": {
+            "domain": [0, 100]
+          }
+        },
+        "x2": {
+          "field": "Attendance_2021_22"
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "Attendance_2017_18",
+            "type": "quantitative",
+            "title": "2017–18 (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Attendance_2021_22",
+            "type": "quantitative",
+            "title": "2021–22 (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "Attendance_2017_18",
+            "Attendance_2021_22"
+          ],
+          "as": [
+            "Year",
+            "Attendance"
+          ]
+        },
+        {
+          "calculate": "datum.Year === 'Attendance_2017_18' ? '2017–18' : '2021–22'",
+          "as": "YearLabel"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
+      "encoding": {
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": [
+            "ACT",
+            "Tas",
+            "WA",
+            "NT",
+            "SA",
+            "Qld",
+            "NSW",
+            "Vic"
+          ]
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "YearLabel",
+          "type": "nominal",
+          "scale": {
+            "domain": ["2017–18", "2021–22"],
+            "range": ["#4C78A8", "#E07B91"]
+          },
+          "legend": {
+            "title": "Survey year",
+            "orient": "top"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "YearLabel",
+            "type": "nominal",
+            "title": "Survey year"
+          },
+          {
+            "field": "Attendance",
+            "type": "quantitative",
+            "title": "Attendance (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "Attendance_2017_18",
+            "Attendance_2021_22"
+          ],
+          "as": [
+            "Year",
+            "Attendance"
+          ]
+        },
+        {
+          "calculate": "datum.Year === 'Attendance_2017_18' ? '2017–18' : '2021–22'",
+          "as": "YearLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -10,
+        "fontSize": 10,
+        "color": "black"
+      },
+      "encoding": {
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": [
+            "ACT",
+            "Tas",
+            "WA",
+            "NT",
+            "SA",
+            "Qld",
+            "NSW",
+            "Vic"
+          ]
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ]
+}

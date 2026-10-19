@@ -1,0 +1,80 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Creative Participation Across Australian States",
+  "width": 700,
+  "height": 500,
+  "projection": {
+    "type": "mercator"
+  },
+  "data": {
+    "url": "../data/australia_states.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2026_AUST_GDA2020"
+    }
+  },
+  
+"transform": [
+  {
+    "lookup": "properties.STE_NAME26",
+    "from": {
+      "data": {
+        "url": "../data/choro_bivar.csv",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "key": "State"
+    },
+    "as": "matched"
+  },
+  {
+    "filter": "datum.matched != null"
+  },
+  {
+    "calculate": "toNumber(datum.matched.Participation)",
+    "as": "ParticipationNumber"
+  },
+  {
+    "calculate": "toNumber(datum.matched.SampleSize)",
+    "as": "SampleSizeNumber"
+  }
+],
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "ParticipationNumber",
+      "type": "quantitative",
+      "title": "Creative participation (%)",
+      "scale": {
+        "scheme": "blues",
+        "domain": [40, 55]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME26",
+        "type": "nominal",
+        "title": "State/Territory"
+      },
+      {
+        "field": "ParticipationNumber",
+        "type": "quantitative",
+        "title": "Creative participation (%)",
+        "format": ".0f"
+      },
+      {
+        "field": "SampleSizeNumber",
+        "type": "quantitative",
+        "title": "Sample size",
+        "format": ","
+      }
+    ]
+  }
+}

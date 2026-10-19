@@ -1,0 +1,201 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/change_in_attendance.csv"
+  },
+  "title": {
+    "text": "Changes in Performing Arts Attendance",
+    "subtitle": "Australian adults aged 15+, percentage attending at least once"
+  },
+  "width": 500,
+  "height": 190,
+  "transform": [
+    {
+      "fold": [
+        "Attendance_2017_18",
+        "Attendance_2021_22"
+      ],
+      "as": [
+        "Year",
+        "Attendance"
+      ]
+    },
+    {
+      "calculate": "datum.Year === 'Attendance_2017_18' ? '2017–18' : '2021–22'",
+      "as": "YearLabel"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#B8B8B8"
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Live music concerts or performances",
+            "Theatre performances",
+            "Musicals or operas",
+            "Dance performances"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 250
+          }
+        },
+        "x": {
+          "field": "Attendance_2017_18",
+          "type": "quantitative",
+          "title": "Attendance (%)",
+          "scale": {
+            "domain": [0, 45]
+          }
+        },
+        "x2": {
+          "field": "Attendance_2021_22"
+        },
+        "tooltip": [
+          {
+            "field": "Activity",
+            "type": "nominal",
+            "title": "Event"
+          },
+          {
+            "field": "Attendance_2017_18",
+            "type": "quantitative",
+            "title": "2017–18 (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Attendance_2021_22",
+            "type": "quantitative",
+            "title": "2021–22 (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "Attendance_2017_18",
+            "Attendance_2021_22"
+          ],
+          "as": [
+            "Year",
+            "Attendance"
+          ]
+        },
+        {
+          "calculate": "datum.Year === 'Attendance_2017_18' ? '2017–18' : '2021–22'",
+          "as": "YearLabel"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Live music concerts or performances",
+            "Theatre performances",
+            "Musicals or operas",
+            "Dance performances"
+          ]
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "YearLabel",
+          "type": "nominal",
+          "scale": {
+            "domain": ["2017–18", "2021–22"],
+            "range": ["#4C78A8", "#E07B91"]
+          },
+          "legend": {
+            "title": "Survey year",
+            "orient": "top"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Activity",
+            "type": "nominal",
+            "title": "Event"
+          },
+          {
+            "field": "YearLabel",
+            "type": "nominal",
+            "title": "Survey year"
+          },
+          {
+            "field": "Attendance",
+            "type": "quantitative",
+            "title": "Attendance (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "Attendance_2017_18",
+            "Attendance_2021_22"
+          ],
+          "as": [
+            "Year",
+            "Attendance"
+          ]
+        },
+        {
+          "calculate": "datum.Year === 'Attendance_2017_18' ? '2017–18' : '2021–22'",
+          "as": "YearLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -10,
+        "fontSize": 10,
+        "color": "black"
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Live music concerts or performances",
+            "Theatre performances",
+            "Musicals or operas",
+            "Dance performances"
+          ]
+        },
+        "x": {
+          "field": "Attendance",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Attendance",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "value": "black"
+        }
+      }
+    }
+  ]
+}
