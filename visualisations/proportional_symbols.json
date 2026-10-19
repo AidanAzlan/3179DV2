@@ -40,7 +40,7 @@
     },
     {
       "data": {
-        "url": "../data/participation_long_lat.csv",
+        "url": "https://aidanazlan.github.io/3179DV2/data/participation_long_lat.csv",
         "format": {
           "type": "csv"
         }

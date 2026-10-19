@@ -19,7 +19,7 @@
       "lookup": "properties.STE_NAME26",
       "from": {
         "data": {
-          "url": "../data/choro_bivar.csv",
+          "url": "https://aidanazlan.github.io/3179DV2/data/choro_bivar.csv",
           "format": {
             "type": "csv"
           }
