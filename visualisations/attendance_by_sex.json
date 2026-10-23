@@ -23,8 +23,7 @@
             "Live music concerts or performances",
             "Musicals or operas",
             "Theatre performances",
-            "Dance performances",
-            "Other performing arts"
+            "Dance performances"
           ],
           "title": null,
           "axis": {
@@ -91,8 +90,7 @@
             "Live music concerts or performances",
             "Musicals or operas",
             "Theatre performances",
-            "Dance performances",
-            "Other performing arts"
+            "Dance performances"
           ]
         },
         "x": {

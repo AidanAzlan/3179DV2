@@ -74,7 +74,7 @@
             "range": [50, 1200]
           },
           "legend": {
-            "title": "Participation (%)"
+            "title": "Creative Participation (%)"
           }
         },
         "tooltip": [
@@ -86,7 +86,7 @@
           {
             "field": "SelectedParticipation",
             "type": "quantitative",
-            "title": "Participation (%)"
+            "title": "Creative Participation (%)"
           }
         ]
       }
